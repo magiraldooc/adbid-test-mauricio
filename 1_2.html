@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+      window.onload = function(){
+          var submitButton = document.querySelector('form.signin-form button.btn.btn-style.btn-primary');
+          submitButton.onclick = function(){
+            var nameInput = document.querySelector('input[name="w3lName"]');
+            var subjectInput = document.querySelector('input[name="w3lSubject"]');
+            var senderInput = document.querySelector('input[name="w3lSender"]');
+            var phoneInput = document.querySelector('input[name="w3lPhone"]');
+            var messageInput = document.querySelector('textarea[name="w3lMessage"]');
+            var messages = [];
+            var messagesText = 'Some fields are empty \n\n';
+            if(nameInput && nameInput.value == ''){
+                messages.push('Name field is required');
+            }
+            if(subjectInput && subjectInput.value == ''){
+                messages.push('Subject field is required');
+            }
+            if(senderInput && senderInput.value == ''){
+                messages.push('Sender field is required');
+            }
+            if(phoneInput && phoneInput.value == ''){
+                messages.push('Phone field is required');
+            }
+            if(messageInput && messageInput.value == ''){
+                messages.push('Message field is required');
+            }
+            for (i = 0; i < messages.length; i ++){
+                messagesText += messages[i] + '\n';
+            }
+            //console.log(messagesText);
+            if (messages.length > 0){
+                alert(messagesText);
+            }else{
+                alert('Form sent success');
+            }
+          };
+      };
+  </script>
+    <div class="col-lg-8 form-inner-cont">
+        <form action="https://sendmail.w3layouts.com/submitForm" method="post" class="signin-form">
+            <div class="form-grids">
+                <div class="form-input">
+                    <input type="text" name="w3lName" id="w3lName" placeholder="Enter your name *"
+                        required="" />
+                </div>
+                <div class="form-input">
+                    <input type="text" name="w3lSubject" id="w3lSubject" placeholder="Enter subject "
+                        required />
+                </div>
+                <div class="form-input">
+                    <input type="email" name="w3lSender" id="w3lSender" placeholder="Enter your email *"
+                        required />
+                </div>
+                <div class="form-input">
+                    <input type="text" name="w3lPhone" id="w3lPhone" placeholder="Enter your Phone Number *"
+                        required />
+                </div>
+            </div>
+            <div class="form-input">
+                <textarea name="w3lMessage" id="w3lMessage" placeholder="Type your query here"
+                    required=""></textarea>
+            </div>
+            <div class="text-right">
+                <button class="btn btn-style btn-primary">Submit Now</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
